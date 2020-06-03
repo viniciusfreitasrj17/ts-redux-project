@@ -4,7 +4,7 @@ import HeroController from './controllers/HeroController';
 
 const router = Router();
 
-router.get('/heros', HeroController.index);
-router.post('/heros', HeroController.store);
+router.get('/heroes', HeroController.index);
+router.post('/heroes', HeroController.store);
 
 export default router;

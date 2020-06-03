@@ -4,9 +4,9 @@ import Hero from '../schemas/Hero';
 
 class HeroController {
   public async index(req: Request, res: Response): Promise<Response> {
-    const heros = await Hero.find();
+    const heroes = await Hero.find();
 
-    return res.json(heros);
+    return res.json(heroes);
   }
 
   public async store(req: Request, res: Response): Promise<Response> {
