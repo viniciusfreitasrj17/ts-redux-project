@@ -8,9 +8,11 @@ import Slide from "./components/Slide";
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <Content />
-        <Slide />
+      <div className="App container">
+        <div className="row">
+          <Content />
+          <Slide />
+        </div>
       </div>
     </Provider>
   );

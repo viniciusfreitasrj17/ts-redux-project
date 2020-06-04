@@ -19,15 +19,19 @@ type Props = StateProps & DispatchProps;
 const Content: FunctionComponent<Props> = ({ heroes, loadRequest }) => {
   useEffect(() => {
     loadRequest();
-  }, []);
+  });
 
   return (
-    <div>
-      <ul>
+    <div style={{ width: "50%", border: "1px green solid", height: "100vh" }}>
+      <h1 style={{ textAlign: "center" }}>Content</h1>
+      <ul className="row col-md-4" style={{ margin: "0 auto" }}>
         {heroes.map((h) => (
-          <li>
-            <h1> {h.name} </h1>
-            <p> {h.imgSrc} </p>
+          <li key={h.id} style={{ padding: "1rem" }}>
+            <strong> {h.name} </strong>
+            {/* <p> {h.imgSrc} </p> */}
+            <button onClick={() => console.log(`Clicked hero ${h.name}`)}>
+              OK
+            </button>
           </li>
         ))}
       </ul>
