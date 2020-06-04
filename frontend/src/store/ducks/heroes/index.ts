@@ -2,7 +2,7 @@ import { Reducer } from "redux";
 import { HeroesState, HeroesTypes } from "./types";
 
 const INITIAL_STATE: HeroesState = {
-  data: [{ id: 1, name: "Batman", imgSrc: "..." }],
+  data: [],
   loading: false,
   error: false,
 };

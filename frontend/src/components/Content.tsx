@@ -24,11 +24,28 @@ const Content: FunctionComponent<Props> = ({ heroes, loadRequest }) => {
   return (
     <div style={{ width: "50%", border: "1px green solid", height: "100vh" }}>
       <h1 style={{ textAlign: "center" }}>Content</h1>
-      <ul className="row col-md-4" style={{ margin: "0 auto" }}>
+      <ul
+        className="row col-md-8"
+        style={{
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         {heroes.map((h) => (
-          <li key={h.id} style={{ padding: "1rem" }}>
+          <li
+            key={h.id}
+            style={{
+              padding: "1rem",
+              textDecoration: "none",
+              backgroundColor: "#8094e0",
+              margin: "1rem .1rem",
+            }}
+            className="col-md-4"
+          >
             <strong> {h.name} </strong>
             {/* <p> {h.imgSrc} </p> */}
+            <hr />
             <button onClick={() => console.log(`Clicked hero ${h.name}`)}>
               OK
             </button>

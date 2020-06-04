@@ -1,8 +1,8 @@
-import { Router } from 'express';
+import { Router, IRouter } from 'express';
 
 import HeroController from './controllers/HeroController';
 
-const router = Router();
+const router: IRouter = Router();
 
 router.get('/heroes', HeroController.index);
 router.post('/heroes', HeroController.store);
