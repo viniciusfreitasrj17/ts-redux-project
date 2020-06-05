@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 
-import heroes from "./heroes";
+import { reducerHero, reducerImg } from "./heroes";
 
 export default combineReducers({
-  heroes,
+  heroes: reducerHero,
+  hero: reducerImg,
 });

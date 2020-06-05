@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
 import { ApplicationState } from "../store";
 import { Hero } from "../store/ducks/heroes/types";
-import * as HeroesActions from "../store/ducks/heroes/actions";
+import { loadRequest, toggleRequest } from "../store/ducks/heroes/actions";
 
 interface StateProps {
   heroes: Hero[];
@@ -12,11 +12,12 @@ interface StateProps {
 
 interface DispatchProps {
   loadRequest(): void;
+  toggleRequest(data: Hero): void;
 }
 
 type Props = StateProps & DispatchProps;
 
-const Content: FunctionComponent<Props> = ({ heroes, loadRequest }) => {
+const Content: FC<Props> = ({ heroes, loadRequest, toggleRequest }) => {
   useEffect(() => {
     loadRequest();
   });
@@ -44,11 +45,8 @@ const Content: FunctionComponent<Props> = ({ heroes, loadRequest }) => {
             className="col-md-4"
           >
             <strong> {h.name} </strong>
-            {/* <p> {h.imgSrc} </p> */}
             <hr />
-            <button onClick={() => console.log(`Clicked hero ${h.name}`)}>
-              OK
-            </button>
+            <button onClick={() => toggleRequest(h)}>OK</button>
           </li>
         ))}
       </ul>
@@ -60,7 +58,9 @@ const mapStateToProps = (state: ApplicationState) => ({
   heroes: state.heroes.data,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(HeroesActions, dispatch);
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  loadRequest: bindActionCreators(loadRequest, dispatch),
+  toggleRequest: bindActionCreators(toggleRequest, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

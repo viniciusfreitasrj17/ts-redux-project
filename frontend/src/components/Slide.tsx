@@ -1,6 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
+import { connect } from "react-redux";
 
-const Slide = () => {
+import { ApplicationState } from "../store";
+import { Hero } from "../store/ducks/heroes/types";
+
+interface StateProps {
+  hero: Hero;
+}
+
+type Props = StateProps;
+
+const Slide: FC<Props> = ({ hero }) => {
   return (
     <div style={{ width: "50%", border: "1px red solid", height: "100vh" }}>
       <h1 style={{ textAlign: "center" }}>Slide</h1>
@@ -17,9 +27,11 @@ const Slide = () => {
           style={{
             height: "300px",
             width: "300px",
-            border: "1px #000 solid",
-            // margin: "5% auto",
-            // backgroundColor: activeImage.content,
+            // border: "1px #000 solid",
+            backgroundImage: `url(${hero.imgSrc})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
             transition: "all 1s ease 0s",
           }}
         ></div>
@@ -28,4 +40,8 @@ const Slide = () => {
   );
 };
 
-export default Slide;
+const mapStateToProps = (state: ApplicationState) => ({
+  hero: state.hero.data,
+});
+
+export default connect(mapStateToProps)(Slide);
