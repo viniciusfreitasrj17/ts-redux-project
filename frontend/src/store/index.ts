@@ -21,8 +21,6 @@ const sagaMiddleware = createSagaMiddleware();
 const store: Store<ApplicationState> = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(sagaMiddleware))
-  // (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-  //   (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 sagaMiddleware.run(rootSaga);

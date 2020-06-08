@@ -7,22 +7,15 @@ export enum HeroesTypes {
   LOAD_REQUEST = "@heroes/LOAD_REQUEST",
   LOAD_SUCCESS = "@heroes/LOAD_SUCCESS",
   LOAD_FAILURE = "@heroes/LOAD_FAILURE",
+
+  STORE_REQUEST = "@heroes/STORE_REQUEST",
+  STORE_SUCCESS = "@heroes/STORE_SUCCESS",
+  STORE_FAILURE = "@heroes/STORE_FAILURE",
 }
 
 export enum HeroTypes {
   TOGGLE_REQUEST = "@heroes/TOGGLE_REQUEST",
 }
-
-export type Types =
-  | HeroesTypes.LOAD_REQUEST
-  | HeroesTypes.LOAD_SUCCESS
-  | HeroesTypes.LOAD_FAILURE
-  | HeroTypes.TOGGLE_REQUEST;
-
-// export interface HeroToggle {
-//   type: Types;
-//   data?: any;
-// }
 
 export type DemoActions = ActionType<typeof Actions>;
 
@@ -34,10 +27,6 @@ export interface Hero {
   name: string;
   imgSrc: string;
 }
-
-// export interface Img {
-//   imgSrc: string;
-// }
 
 /**
  * State Types

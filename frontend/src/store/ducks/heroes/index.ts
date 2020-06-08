@@ -10,9 +10,9 @@ const INITIAL_STATE_HERO: HeroesState = {
 const INITIAL_STATE_IMG: HeroState = {
   data: {
     id: 0,
-    name: "a",
+    name: "OK",
     imgSrc:
-      "https://img.olhardigital.com.br/uploads/acervo_imagens/2019/10/r16x9/20191008095702_1200_675_-_coringa.jpg",
+      "https://2.bp.blogspot.com/-mHR5Tqgk1Tg/Tx3kRd7ylFI/AAAAAAAABMw/yuQwKhGg280/s1600/ok.jpg",
   },
 };
 
@@ -34,6 +34,20 @@ const reducerHero: Reducer<HeroesState> = (
       };
 
     case HeroesTypes.LOAD_FAILURE:
+      return { ...state, loading: false, error: true, data: [] };
+
+    case HeroesTypes.STORE_REQUEST:
+      return { ...state, loading: true };
+
+    case HeroesTypes.STORE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.payload.data,
+      };
+
+    case HeroesTypes.STORE_FAILURE:
       return { ...state, loading: false, error: true, data: [] };
 
     default:

@@ -7,10 +7,15 @@ export const loadSuccess = (data: Hero[]) =>
   action(HeroesTypes.LOAD_SUCCESS, { data });
 export const loadFailure = () => action(HeroesTypes.LOAD_FAILURE);
 
-/** Toggle */
-// export const toggleRequest = (hero: Hero) =>
-//   action(HeroTypes.TOGGLE_REQUEST, hero);
+/** Store */
+export const storeRequest = (hero: Hero) => ({
+  type: HeroesTypes.STORE_REQUEST,
+  hero,
+});
+export const storeSuccess = () => ({ type: HeroesTypes.STORE_SUCCESS });
+export const storeFailure = () => ({ type: HeroesTypes.STORE_FAILURE });
 
+/** Toggle */
 export const toggleRequest = (hero: Hero) => ({
   type: HeroTypes.TOGGLE_REQUEST,
   hero,

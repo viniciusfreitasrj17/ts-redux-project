@@ -12,7 +12,7 @@ interface StateProps {
 
 interface DispatchProps {
   loadRequest(): void;
-  toggleRequest(data: Hero): void;
+  toggleRequest(hero: Hero): void;
 }
 
 type Props = StateProps & DispatchProps;
@@ -23,7 +23,9 @@ const Content: FC<Props> = ({ heroes, loadRequest, toggleRequest }) => {
   });
 
   return (
-    <div style={{ width: "50%", border: "1px green solid", height: "100vh" }}>
+    <div
+      style={{ border: "1px green solid", height: "70vh", overflowY: "scroll" }}
+    >
       <h1 style={{ textAlign: "center" }}>Content</h1>
       <ul
         className="row col-md-8"
